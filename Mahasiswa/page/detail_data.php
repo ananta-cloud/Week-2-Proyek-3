@@ -33,22 +33,22 @@ $page_title = "Detail Mahasiswa: " . ($mahasiswa['nama']);
         <div class="card-header"><h1><?= $page_title; ?></h1></div>
         <div class="card-body">
             <div class="detail-group">
-                <label>NIM</label>
+               <b><label>NIM</label></b>
                 <p><?= ($mahasiswa['nim']); ?></p>
             </div>
             <div class="detail-group">
-                <label>Nama Lengkap</label>
+                <b><label>Nama Lengkap</label></b>
                 <p><?= ($mahasiswa['nama']); ?></p>
             </div>
             <div class="detail-group">
-                <label>Umur</label>
+                <b><label>Umur</label></b>
                 <p><?= ($mahasiswa['umur']); ?></p>
             </div>
             <div class="form-actions">
                  <a href="../main.php" class="btn btn-danger" style="flex: 1;">Kembali</a>
             </div>
         </div>
-        <div class="card-footer">Sistem Informasi Akademik Sederhana</div>
+        <div class="card-footer">Sistem Informasi Akademik</div>
     </div>
 </div>
 </body>

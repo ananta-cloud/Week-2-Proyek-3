@@ -55,7 +55,7 @@ $page_title = "Tambah Data Mahasiswa";
                 </div>
             </form>
         </div>
-        <div class="card-footer">Sistem Informasi Akademik Sederhana</div>
+        <div class="card-footer">Sistem Informasi Akademik</div>
     </div>
 </div>
 </body>

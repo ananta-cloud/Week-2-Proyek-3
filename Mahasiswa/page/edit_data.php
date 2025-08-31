@@ -13,6 +13,7 @@ $mahasiswa = $result->fetch_assoc();
 if (!$mahasiswa) {
     die("Mahasiswa tidak ditemukan.");
 }
+$page_title = "Edit Data Mahasiswa"; 
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -25,7 +26,7 @@ if (!$mahasiswa) {
 <body>
 <div class="container">
     <div class="card">
-        <div class="card-header"><h4><?= $page_title; ?></h4></div>
+        <div class="card-header"><h1><?= $page_title; ?></h1></div>
         <div class="card-body">
             <form method="post" action="update_data.php">
                 <input type="hidden" name="id" value="<?= ($mahasiswa['id']); ?>">
@@ -47,7 +48,7 @@ if (!$mahasiswa) {
                 </div>
             </form>
         </div>
-        <div class="card-footer">Sistem Informasi Akademik Sederhana</div>
+        <div class="card-footer">Sistem Informasi Akademik</div>
     </div>
 </div>
 </body>
