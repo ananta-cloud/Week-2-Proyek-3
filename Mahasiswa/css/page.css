@@ -74,7 +74,7 @@ body {
     width: 100%;
     font-size: 1rem;
 }
-.btn-success { background-color: #001eff; color: white; text-align: center;}
+.btn-success { background-color: #001eff; color: rgb(0, 0, 0); text-align: center;}
 .btn-success:hover { background-color: #00950c; }
 
 .btn-danger { background-color: #dd1b01; color: white;text-align: center;}
