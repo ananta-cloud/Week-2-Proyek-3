@@ -23,10 +23,6 @@ $page_title = "Data Mahasiswa";
                     <h1><?= $page_title; ?></h1>
                 </div>
                 <div class="card-body">
-                    <?php if (isset($_SESSION['success_message'])): ?>
-                    <div class="alert alert-success"><?= $_SESSION['success_message']; ?></div>
-                    <?php unset($_SESSION['success_message']); ?>
-                    <?php endif; ?>
                     <div class="action-row">
                         <a href="page/tambah_data.php" class="btn btn-success">Tambah Data</a>
                         <form action="page/search_data.php" method="get" class="search-form">

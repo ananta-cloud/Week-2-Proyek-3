@@ -17,7 +17,7 @@ if (!$mahasiswa) {
     die("Mahasiswa dengan ID tersebut tidak ditemukan.");
 }
 
-$page_title = "Detail Mahasiswa: " . ($mahasiswa['nama']);
+$page_title = "Detail Mahasiswa : " . ($mahasiswa['nama']);
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -32,6 +32,7 @@ $page_title = "Detail Mahasiswa: " . ($mahasiswa['nama']);
     <div class="card">
         <div class="card-header"><h1><?= $page_title; ?></h1></div>
         <div class="card-body">
+            <!-- isi detail -->
             <div class="detail-group">
                <b><label>NIM</label></b>
                 <p><?= ($mahasiswa['nim']); ?></p>

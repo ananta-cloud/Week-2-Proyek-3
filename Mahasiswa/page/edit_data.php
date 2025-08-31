@@ -44,7 +44,7 @@ $page_title = "Edit Data Mahasiswa";
                 </div>
                 <div class="form-actions">
                     <a href="../main.php" class="btn btn-danger">Kembali</a>
-                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                    <button type="submit" class="btn btn-success">Simpan Perubahan</button>
                 </div>
             </form>
         </div>

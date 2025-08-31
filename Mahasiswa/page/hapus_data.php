@@ -10,10 +10,9 @@ $stmt = $con->prepare("DELETE FROM mahasiswa WHERE id = ?");
 $stmt->bind_param("i", $id);
 
 if ($stmt->execute()) {
-    $_SESSION['success_message'] = "Data mahasiswa berhasil dihapus.";
+    header("Location: ../main.php");
 } else {
-    $_SESSION['error_message'] = "Gagal menghapus data.";
+   header("Location: hapus_data.php");
 }
-header("Location: ../main.php");
 exit();
 ?>

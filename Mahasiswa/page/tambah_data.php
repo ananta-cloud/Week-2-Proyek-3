@@ -7,17 +7,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nama = $_POST['nama'];
     $umur = $_POST['umur'];
 
-    $stmt = $con->prepare("INSERT INTO mahasiswa (nim, nama, umur) VALUES (?, ?, ?)");
-    $stmt->bind_param("ssi", $nim, $nama, $umur);
-    
-    
-    if ($stmt->execute()) {
-        $_SESSION['success_message'] = "Data mahasiswa berhasil ditambahkan.";
+    // Query untuk mengecek apakah NIM sudah ada
+    $check_stmt = $con->prepare("SELECT nim FROM mahasiswa WHERE nim = ?");
+    $check_stmt->bind_param("s", $nim);
+    $check_stmt->execute();
+    $check_stmt->store_result();
+
+    // Cek jumlah baris yang ditemukan
+    if ($check_stmt->num_rows > 0) {
+        header("Location: tambah_data.php");
     } else {
-        $_SESSION['error_message'] = "Gagal menambahkan data.";
+        $stmt = $con->prepare("INSERT INTO mahasiswa (nim, nama, umur) VALUES (?, ?, ?)");
+        $stmt->bind_param("ssi", $nim, $nama, $umur);
+        
+        if ($stmt->execute()) {
+           header("Location: ../main.php");
+        } else {
+           header("Location: tambah_data.php");
+        }
+        $stmt->close();
     }
-    header("Location: ../main.php");
-    exit();
+    $check_stmt->close();
+
 }
 
 $page_title = "Tambah Data Mahasiswa";
