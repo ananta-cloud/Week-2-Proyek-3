@@ -18,7 +18,7 @@ Tujuan dari proyek ini adalah untuk menerapkan fungsionalitas dasar CRUD pada se
 
 -----
 
-## 🚀 Proyek 3: CRUD dengan PHP Natif
+## 🚀 Proyek 3: CRUD dengan PHP Native
 
 Folder: `/Mahasiswa`
 
