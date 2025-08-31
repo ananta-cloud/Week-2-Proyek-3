@@ -32,15 +32,15 @@ $page_title = "Edit Data Mahasiswa";
                 <input type="hidden" name="id" value="<?= ($mahasiswa['id']); ?>">
                 <div class="form-group">
                     <label>NIM</label>
-                    <input type="text" name="nim" class="form-control" value="<?= ($mahasiswa['nim']); ?>" required>
+                    <input type="text" name="nim" minlength="1" maxlength="11" class="form-control" value="<?= ($mahasiswa['nim']); ?>" required>
                 </div>
                 <div class="form-group">
                     <label>Nama</label>
-                    <input type="text" name="nama" class="form-control" value="<?= ($mahasiswa['nama']); ?>" required>
+                    <input type="text" name="nama" minlength="1" maxlength="25" class="form-control" value="<?= ($mahasiswa['nama']); ?>" required>
                 </div>
                 <div class="form-group">
                     <label>Umur</label>
-                    <input type="number" name="umur" class="form-control" value="<?= ($mahasiswa['umur']); ?>" required>
+                    <input type="number" name="umur" minlength="1" maxlength="3" class="form-control" value="<?= ($mahasiswa['umur']); ?>" required>
                 </div>
                 <div class="form-actions">
                     <a href="../main.php" class="btn btn-danger">Kembali</a>

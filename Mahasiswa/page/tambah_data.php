@@ -39,15 +39,15 @@ $page_title = "Tambah Data Mahasiswa";
             <form method="post" action="tambah_data.php">
                 <div class="form-group">
                     <label>NIM</label>
-                    <input type="text" name="nim" class="form-control" required>
+                    <input type="text" name="nim" minlength="1" maxlength="11" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label>Nama</label>
-                    <input type="text" name="nama" class="form-control" required>
+                    <input type="text" name="nama" minlength="1" maxlength="25" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label>Umur</label>
-                    <input type="number" name="umur" class="form-control" required>
+                    <input type="number" name="umur" minlength="1" maxlength="3" class="form-control" required>
                 </div>
                 <div class="form-actions">
                     <a href="../main.php" class="btn btn-danger">Kembali</a>
