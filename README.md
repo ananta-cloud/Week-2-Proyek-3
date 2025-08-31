@@ -32,7 +32,7 @@ Aplikasi ini dibuat murni dengan menggunakan bahasa pemrograman PHP tanpa bantua
     
 ## 🔥 Proyek 3: CRUD dengan CodeIgniter 4
 
-Folder: `/ci4-crud`
+Folder: `/Code_Igniter`
 
 Aplikasi ini dibangun menggunakan *framework* PHP modern, CodeIgniter 4, yang mengimplementasikan pola desain **MVC (Model-View-Controller)**.
 
