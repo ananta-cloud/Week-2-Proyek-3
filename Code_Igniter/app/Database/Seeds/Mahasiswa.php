@@ -19,7 +19,6 @@ class Mahasiswa extends Seeder
 			// insert semua data ke tabel
 			$this->db->table(tableName: 'mahasiswa')->insert($data);
 		}
-		
 
 	}
 }

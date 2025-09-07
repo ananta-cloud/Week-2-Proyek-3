@@ -1,15 +1,2 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $title;?></title>
-</head>
-<body>
-    <h1 align="center">
-        <?=
-            $msg;
-        ?>
-    </h1>
-</body>
-</html>
+<link rel="icon" type="image/png" href="<?= base_url('assets/logo lebah.png') ?>">
+<h1 align="center">HELLO WORLD</h1> 

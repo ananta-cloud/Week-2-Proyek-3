@@ -16,7 +16,8 @@ class App extends BaseConfig
      *
      * E.g., http://example.com/
      */
-    public string $baseURL = 'http://localhost:8080/';
+    // public string $baseURL = 'http://localhost:8080/';
+    public string $baseURL = 'http://localhost/WEEK-2-PROYEK-3/Code_Igniter/public/';
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
@@ -199,4 +200,89 @@ class App extends BaseConfig
      * @see http://www.w3.org/TR/CSP/
      */
     public bool $CSPEnabled = false;
+
+     /**
+     * --------------------------------------------------------------------------
+     * Session Driver
+     * --------------------------------------------------------------------------
+     *
+     * The session storage driver to use:
+     * - `CodeIgniter\Session\Handlers\FileHandler`
+     * - `CodeIgniter\Session\Handlers\DatabaseHandler`
+     * - `CodeIgniter\Session\Handlers\MemcachedHandler`
+     * - `CodeIgniter\Session\Handlers\RedisHandler`
+     */
+    public string $sessionDriver = 'CodeIgniter\Session\Handlers\FileHandler';
+
+    /**
+     * --------------------------------------------------------------------------
+     * Session Cookie Name
+     * --------------------------------------------------------------------------
+     *
+     * The session cookie name, must contain only [0-9a-z_-] characters
+     */
+    public string $sessionCookieName = 'ci_session';
+
+    /**
+     * --------------------------------------------------------------------------
+     * Session Expiration
+     * --------------------------------------------------------------------------
+     *
+     * The number of SECONDS you want the session to last.
+     * Setting to 0 (zero) means expire when the browser is closed.
+     */
+    public int $sessionExpiration = 7200;
+
+    /**
+     * --------------------------------------------------------------------------
+     * Session Save Path
+     * --------------------------------------------------------------------------
+     *
+     * The location to save sessions to, driver dependent.
+     *
+     * For the 'files' driver, it's a path to a writable directory.
+     * WARNING: Only absolute paths are supported!
+     *
+     * For the 'database' driver, it's the name of the session table.
+     *
+     * IMPORTANT: You are responsible for creating the session table when using
+     * the 'database' driver.
+     *
+     * For the 'redis' and 'memcached' drivers, it's a server-specific
+     * configuration string. See the user guide for details.
+     */
+    // PASTIKAN BARIS INI TIDAK DIUBAH DARI DEFAULTNYA
+    public string $sessionSavePath = 'C:\\xampp\\tmp';
+
+    /**
+     * --------------------------------------------------------------------------
+     * Session Match IP
+     * --------------------------------------------------------------------------
+     *
+     * Whether to match the user's IP address when reading the session data.
+     *
+     * WARNING: If you're using a load balancer, you likely want to set this
+     * to FALSE.
+     */
+    public bool $sessionMatchIP = false;
+
+    /**
+     * --------------------------------------------------------------------------
+     * Session Time to Update
+     * --------------------------------------------------------------------------
+     *
+     * How many seconds between CI regenerating the session ID.
+     */
+    public int $sessionTimeToUpdate = 300;
+
+    /**
+     * --------------------------------------------------------------------------
+     * Session Regenerate Destroy
+     * --------------------------------------------------------------------------
+     *
+     * Whether to destroy session data associated with the old session ID
+     * when auto-regenerating the session ID. When set to FALSE, the data
+     * will be later deleted by the garbage collector.
+     */
+    public bool $sessionRegenerateDestroy = false;
 }

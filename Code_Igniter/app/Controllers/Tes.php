@@ -5,11 +5,10 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 
-class index extends BaseController
+class Tes extends BaseController
 {
     public function index()
     {
-        // return view('index');
-        echo "<h1>HELLO WORLD</h1>";
+        //
     }
 }

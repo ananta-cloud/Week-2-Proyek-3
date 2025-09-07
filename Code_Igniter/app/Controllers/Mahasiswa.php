@@ -1,89 +1,105 @@
 <?php
+
 namespace App\Controllers;
-use CodeIgniter\Controller;
+
+use App\Controllers\BaseController;
 use App\Models\MahasiswaModel;
 
-class Mahasiswa extends Controller
+class Mahasiswa extends BaseController
 {
+    protected $mahasiswaModel;
+
+    public function __construct()
+    {
+        $this->mahasiswaModel = new MahasiswaModel();
+    }
+
     public function index()
     {
-        $mhs = new MahasiswaModel;
-        $mahasiswa['title']     = 'Data Mahasiswa';
-        $mahasiswa['getMahasiswa'] = $mhs->getMahasiswa();
-        echo view('mahasiswa',$mahasiswa);
+        $data = [
+            'title'     => 'Data Mahasiswa',
+            'mahasiswa' => $this->mahasiswaModel->findAll()
+        ];
+        return view('mahasiswa/index', $data);
     }
 
     public function detail($id)
     {
-    $model = new MahasiswaModel;
-    $data['mahasiswa'] = $model->find($id);
+        $mahasiswa = $this->mahasiswaModel->find($id);
+        if (empty($mahasiswa)) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Data Mahasiswa tidak ditemukan untuk ID: ' . $id);
+        }
+        $data = [
+            'title'     => 'Detail Mahasiswa',
+            'mahasiswa' => $mahasiswa
+        ];
+        return view('mahasiswa/detail', $data);
+    }
 
-    // Cek jika data tidak ditemukan
-    if (empty($data['mahasiswa'])) {
-        // Tampilkan halaman error 404 bawaan CodeIgniter
-        throw new \CodeIgniter\Exceptions\PageNotFoundException('Mahasiswa dengan ID ' . $id . ' tidak ditemukan');
-    }
-    $data['title'] = 'Detail Mahasiswa: ' . $data['mahasiswa']['nama'];
-    return view('detail', $data);
-    }
-    
-    public function tambah()
+    public function create()
     {
-        echo view('insert');
+        $data = [
+            'title'   => 'Tambah Data Mahasiswa',
+        ];
+        return view('mahasiswa/create', data: $data);
+    }
+
+    public function store()
+    {
+        $rules = [
+            'nim'  => 'required|is_unique[mahasiswa.nim]',
+            'nama' => 'required',
+            'umur' => 'required|numeric'
+        ];
+
+        if (!$this->validate($rules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        $this->mahasiswaModel->save([
+            'nim'  => $this->request->getPost('nim'),
+            'nama' => $this->request->getPost('nama'),
+            'umur' => $this->request->getPost('umur'),
+        ]);
+
+        return redirect()->to('/mahasiswa')->with('success', 'Data mahasiswa berhasil ditambahkan.');
     }
 
     public function edit($id)
     {
-        $model = new MahasiswaModel;
-        $getMahasiswa = $model->find($id);
-        if(isset($getMahasiswa))
-        {
-            $data['mahasiswa'] = $getMahasiswa;
-            // $data['title']  = 'Edit '.$getMahasiswa->nama;
-            echo view('edit', $data);
-        }else{
-            return redirect()->to(base_url('/'))->with('error', "ID Mahasiswa {$id} Tidak Ditemukan");
-    }}
-
-    public function update()
-    {
-        $model = new MahasiswaModel;
-        $id = $this->request->getPost('id');
         $data = [
-            'nim'   => $this->request->getPost('nim'),
-            'nama'  => $this->request->getPost('nama'),
-            'umur'  => $this->request->getPost('umur')
+            'title'     => 'Edit Data Mahasiswa',
+            'mahasiswa' => $this->mahasiswaModel->find($id)
         ];
-        $model->editMahasiswa($data,$id);
-        return redirect()->to(base_url('/'))->with('success', 'Data mahasiswa berhasil diperbarui.');
+        return view('mahasiswa/edit', $data);
     }
 
-     public function add()
+    public function update($id)
     {
-        $model = new MahasiswaModel;
-        $data = [
+        $rules = [
+            'nim'  => "required|is_unique[mahasiswa.nim,id,{$id}]",
+            'nama' => 'required',
+            'umur' => 'required|numeric'
+        ];
+
+        if (!$this->validate($rules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+        
+        $this->mahasiswaModel->save([
+            'id'   => $id,
             'nim'  => $this->request->getPost('nim'),
             'nama' => $this->request->getPost('nama'),
-            'umur' => $this->request->getPost('umur')
-        ];
-        $model->insert($data);
-        return redirect()->to(base_url('/'))->with('success', 'Data mahasiswa berhasil ditambahkan.');
+            'umur' => $this->request->getPost('umur'),
+        ]);
+
+        return redirect()->to('/mahasiswa')->with('success', 'Data mahasiswa berhasil diperbarui.');
     }
 
-    public function hapus($id)
+    public function delete($id)
     {
-        $model = new MahasiswaModel;
-        $getMahasiswa = $model->find($id);
-        if(isset($getMahasiswa))
-        {
-            $model->delete($id);
-            echo '<script>
-                    alert("Hapus Data Barang Sukses");
-                    window.location="'.base_url(relativePath: '/').'"
-                </script>';
-        }else{
-            return redirect()->to(base_url('/'))->with('success', 'Hapus Gagal !, ID barang '.$id.' Tidak ditemukan');
-        }
+        $this->mahasiswaModel->delete($id);
+        return redirect()->to('/mahasiswa')->with('success', 'Data mahasiswa berhasil dihapus.');
     }
-    
 }
+
